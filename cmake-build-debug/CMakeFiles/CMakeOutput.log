@@ -1,0 +1,41 @@
+The system is: Windows - 10.0.19043 - AMD64
+The system is: Windows - 10.0.19043 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/mingw-w64/mingw64/bin/gcc.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "D:/Programming vol.3/Github/C++/Text-Editor-Project/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/mingw-w64/mingw64/bin/g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/mingw-w64/mingw64/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+The CXX compiler identification is GNU, found in "D:/Programming vol.3/Github/C++/Text-Editor-Project/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdCXX/a.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "D:/Programming vol.3/Github/C++/Text-Editor-Project/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/a.exe"
+
