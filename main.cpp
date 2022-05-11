@@ -21,12 +21,15 @@ using namespace std;
 
 void reapeted_word();
 
+void into_upper();
+
 void mergeFiles();
 
 int main() {
 
     mergeFiles();
     reapeted_word();
+    into_upper();
 
 }
 
@@ -91,6 +94,32 @@ void reapeted_word(){
     }
     cout << word << " repeated " << count << " time/s ";
     datafile.close();
+
+}
+void into_upper(){
+    ifstream datafile ;
+    ofstream target_file;
+    char name [80],token[101];
+    char c;
+    do{
+        cout <<"pls enter your file name : ";
+        cin >> name;
+
+        datafile.open(name);
+
+        target_file.open("file_in_capital.txt");
+
+    }
+    while(!datafile);
+
+    while (datafile.peek()!=EOF){  // loop till the end of your file
+        c = datafile . get() ;  //get every char in your read file
+        target_file.put(toupper(c)) ;  // convert every read char into upper case
+
+    }
+    datafile.close();
+    target_file.close();
+
 
 }
 
