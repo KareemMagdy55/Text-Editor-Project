@@ -12,18 +12,22 @@
         Teaching Assistant: Eng. Afaf
 */
 
-
 #include <iostream>
 #include <fstream>
 #include <regex>
+#include "algorithm"
 
 using namespace std;
+
+void reapeted_word();
 
 void mergeFiles();
 
 int main() {
+
     mergeFiles();
-    return 0;
+    reapeted_word();
+
 }
 
 void mergeFiles(){
@@ -60,3 +64,33 @@ void mergeFiles(){
 
 
 }
+
+void reapeted_word(){
+    fstream datafile;
+    char name[80];
+    string word, token;
+    int count = 0;
+    do{
+        cout << "pls enter your file name : ";
+        cin >> name;
+        datafile.open(name);
+
+    }
+    while(!datafile);
+
+    cout << "enter your word : " << "\n ";
+    cin >> word;
+    transform(word.begin(),word.end(),word.begin(),::tolower); // transform all letters of your word you search for into lower case
+    while (datafile>> token ) {
+        transform(token.begin(),token.end(),token.begin(),::tolower);  // transform every word you read from your file int lower case to check if it is equal to your word or not
+        if (word == token){
+            count++;
+
+
+        }
+    }
+    cout << word << " repeated " << count << " time/s ";
+    datafile.close();
+
+}
+
