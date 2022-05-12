@@ -1,4 +1,5 @@
 /*
+
         Text Editor program
 
         FCAI – Programming 1 – 2022 - Assignment 3
@@ -25,11 +26,14 @@ void into_upper();
 
 void mergeFiles();
 
+void into_lower();
+
 int main() {
 
     mergeFiles();
     reapeted_word();
     into_upper();
+    into_lower();
 
 }
 
@@ -115,10 +119,34 @@ void into_upper(){
     while (datafile.peek()!=EOF){  // loop till the end of your file
         c = datafile . get() ;  //get every char in your read file
         target_file.put(toupper(c)) ;  // convert every read char into upper case
-
     }
     datafile.close();
     target_file.close();
+}
+
+void into_lower (){
+
+    ifstream datafile ;
+    ofstream into_lower;
+    char name [80] , c ;
+
+
+
+    do{
+        cout <<"pls enter your file name : ";
+        cin >> name;
+
+        datafile.open(name);
+
+        into_lower.open("into_lower.txt");
+    }
+    while(!datafile);
+    while (datafile.peek()!=EOF){
+        c = datafile . get();
+        into_lower.put(tolower(c)) ;
+    }
+    datafile.close();
+    into_lower.close();
 
 
 }
