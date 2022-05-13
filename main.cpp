@@ -28,13 +28,18 @@ void mergeFiles();
 
 void into_lower();
 
+void first_char_capital();
+
+void exxit();
+
 int main() {
 
     mergeFiles();
     reapeted_word();
     into_upper();
     into_lower();
-
+    first_char_capital();
+    void exxit();
 }
 
 void mergeFiles(){
@@ -149,5 +154,55 @@ void into_lower (){
     into_lower.close();
 
 
+}
+
+void first_char_capital(){
+    fstream File;
+    char name[80] ;
+    char token[250] ;
+    string data ;
+    do{
+        cout << "pls enter your file name : ";
+        cin >> name;
+        File.open(name);
+
+    } while (File.fail());
+
+    File.getline(token,250,EOF);
+    data+=token ;
+    File.close() ;
+    File.open(name,ios::out);
+    data[0]=toupper(data[0]);
+    File.put(data[0]);
+
+    for (int i=1 ; i<data.length()-1 ;i++){
+        if (data[i] == ' ' || data[i]=='\n' ){
+            File.put(data[i]);
+
+            if (isalpha(data[i+1])){
+
+                data[i+1]= toupper(data[i+1]);
+                File.put(data[i+1]);
+                i++;
+            }
+
+            else {
+                File.put(data[i+1]);
+            }
+        }
+
+        else {
+            data [i]=tolower(data[i]);
+            File.put(data[i]);
+
+        }
+    }
+    File.close();
+
+}
+
+void exxit(){
+
+    exit(1);
 }
 
