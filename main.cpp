@@ -118,6 +118,32 @@ void countLines(){
     cout << linesCounter << endl ;
 
 }
+string tolower(string &word){ // overload tolower function to make a lower case strings.
+    for (char &c : word){
+        c = tolower(c);
+    }
+    return word ;
+}
+void findWord(){
+
+    string userWord = "NONE";
+    string fileWord ;
+
+    cout << "Please Enter a word to find:";
+    cin >> userWord;
+
+    while(!file.eof() && file.peek() != EOF) {
+        file >> fileWord;
+
+        if (tolower(fileWord) == tolower(userWord)){
+            cout << "Word was found in the file";
+            break;
+        }else {
+            cout << "Word was not found in the file";
+            break;
+        }
+    }
+}
 
 
 void reapeted_word(){
