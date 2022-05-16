@@ -20,6 +20,17 @@
 
 using namespace std;
 
+fstream file ;
+void loadFile();
+
+void countWords();
+
+void countLines();
+
+void countChars();
+
+void findWord()
+
 void reapeted_word();
 
 void into_upper();
@@ -30,20 +41,30 @@ void into_lower();
 
 void first_char_capital();
 
-void exxit();
-
-
-
 int main() {
 
-    mergeFiles();
-    reapeted_word();
-    into_upper();
-    into_lower();
-    first_char_capital();
-    void exit();
+    return 0;
 }
+void loadFile(){
 
+    char fileName[81];
+
+    cout << "Welcome to your text editor program\n"
+            "Please, input file name :";
+
+    cin >> fileName ;
+
+    file.open(fileName);
+
+    if(file.fail()){
+        cout << "This is a new file. I created it for you\n";
+        file.open(fileName, std::fstream::out );
+
+    }else {
+        cout << "This File Already Exists\n";
+    }
+
+}
 
 void mergeFiles(){
 
@@ -270,7 +291,3 @@ void first_char_capital(){
 
 }
 
-void exit(){
-
-    exit(1);
-}
