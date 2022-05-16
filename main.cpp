@@ -15,8 +15,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <regex>
-#include "algorithm"
+
 
 using namespace std;
 
@@ -181,9 +182,9 @@ void reapeted_word(){
     cout << "enter your word : " << "\n ";
     cin >> word;
 
-    transform(word.begin(),word.end(),word.begin(),::tolower);  // transform all letters of your word you search for into lower case
+    transform(word.begin(),word.end(),word.begin(),::tolower(word));  // transform all letters of your word you search for into lower case
     while (file>> token ) {
-        transform(token.begin(),token.end(),token.begin(),::tolower);   // transform every word you read from your file int lower case to check if it is equal to your word or not
+        transform(token.begin(),token.end(),token.begin(),::tolower(token));   // transform every word you read from your file int lower case to check if it is equal to your word or not
         if (word == token){
             count++;
 
