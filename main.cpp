@@ -94,6 +94,17 @@ void countWords(){
     cout << counter << endl ;
 
 }
+void countChars(){
+    int charCounter = 0;
+
+    while(  file.peek() != EOF) { // Iterate till it is the end of file is reached and avoid EOF char
+        if (file.get()){  // if there is chars in file add one to charCounter.
+            charCounter ++ ;    } // count every char except spaces
+    }
+    cout << charCounter << endl;
+
+}
+
 void reapeted_word(){
     fstream datafile;
     char name[80];
