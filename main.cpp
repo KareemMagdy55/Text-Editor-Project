@@ -178,14 +178,6 @@ void reapeted_word(){
     char name[80];
     string word, token;
     int count = 0;
-    do{
-        cout << "pls enter your file name : ";
-        cin >> name;
-        file.open(name);
-
-    }
-    while(!file);
-
     cout << "enter your word : " << "\n ";
     cin >> word;
 
@@ -207,17 +199,7 @@ void into_upper(){
     ofstream target_file;
     char name [80],token[101];
     char c;
-    do{
-        cout <<"pls enter your file name : ";
-        cin >> name;
-
-        file.open(name);
-
-        target_file.open("file_in_capital.txt");
-
-    }
-    while(!file);
-
+    target_file.open("file_in_capital.txt");
     while (file.peek()!=EOF){  // loop till the end of your file
         c = file . get() ;  //get every char in your read file
         target_file.put(toupper(c)) ;  // convert every read char into upper case
@@ -231,18 +213,7 @@ void into_lower (){
     file ;
     ofstream into_lower;
     char name [80] , c ;
-
-
-
-    do{
-        cout <<"pls enter your file name : ";
-        cin >> name;
-
-        file.open(name);
-
-        into_lower.open("into_lower.txt");
-    }
-    while(!file);
+    into_lower.open("into_lower.txt");
     while (file.peek()!=EOF){
         c = file . get();
         into_lower.put(tolower(c)) ;
@@ -258,13 +229,6 @@ void first_char_capital(){
     char name[80] ;
     char token[250] ;
     string data ;
-    do{
-        cout << "pls enter your file name : ";
-        cin >> name;
-        file.open(name);
-
-    } while (file.fail());
-
     file.getline(token,250,EOF);
     data+=token ;
     file.close() ;
