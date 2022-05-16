@@ -41,8 +41,14 @@ void into_lower();
 
 void first_char_capital();
 
+void mainTextEditor();
+
 int main() {
 
+    loadFile();
+    while (true) {
+        mainTextEditor();
+    }
     return 0;
 }
 void loadFile(){
@@ -290,4 +296,54 @@ void first_char_capital(){
     File.close();
 
 }
+void mainTextEditor(){
+    bool validInput = false ;
 
+    do {
+        int filterChoice = 0;
+        cout << "\n-----------------------------------\n"
+                "Please Choose a filter to apply it to your image\n"
+                "\nPress 1 to merge two files "
+                "\nPress 2 to count words"
+                "\nPress 3 to count lines"
+                "\nPress 4 to count characters"
+                "\nPress 5 to find word"
+                "\nPress 0 to Exit"
+                "\n-----------------------------------\n";
+
+
+        cin >> filterChoice;
+
+        if (filterChoice >= 0 && filterChoice <= 3) {
+
+            switch (filterChoice) {
+                case 0 :
+                    exit(0);
+                case 1:
+                    mergeFiles();
+                    validInput = true;
+                    break;
+                case 2 :
+                    countWords();
+                    validInput = true;
+                    break;
+                case 3 :
+                    countLines();
+                    validInput = true;
+                    break;
+                case 4 :
+                    countChars();
+                    validInput = true;
+                    break;
+                case 5 :
+                    findWord() ;
+                    validInput = true;
+                    break;
+
+            }
+        }
+    }while (! validInput);
+
+
+
+}
