@@ -104,6 +104,21 @@ void countChars(){
     cout << charCounter << endl;
 
 }
+void countLines(){
+    int linesCounter = 0;
+
+    while(!file.eof() && file.peek() != EOF) { // Iterate till it is the end of file is reached and avoid EOF char
+
+        if (file.get() == '\n'){
+            linesCounter ++ ;
+        }
+
+    }
+    linesCounter ++ ;
+    cout << linesCounter << endl ;
+
+}
+
 
 void reapeted_word(){
     fstream datafile;
