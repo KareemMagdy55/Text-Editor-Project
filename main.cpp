@@ -2,7 +2,7 @@
 
         Text Editor program
 
-        FCAI – Programming 1 – 2022 - Assignment 3
+        FCAI – Programming 1 – 2022 - Assignment 4
 
         Date: 8 May 2022
 
@@ -174,7 +174,7 @@ void findWord(){
 
 
 void reapeted_word(){
-     file;
+    file;
     char name[80];
     string word, token;
     int count = 0;
@@ -297,6 +297,156 @@ void first_char_capital(){
     file.close();
 
 }
+
+int read_from_file(){
+    string file_name;
+    cout << endl << "please enter the file name..." << endl;
+    cin >> file_name;
+    ifstream user_file(file_name);
+
+    if (user_file.is_open()){
+        cout << "The content of the file is: " << endl;
+        string myline;
+        while (getline(user_file,myline)){
+            cout << myline << endl;
+        }
+    }
+    else{
+        cout << "enable to open the file." << endl;
+        return 0;
+    }
+    return 0;
+}
+
+int write_to_file(){
+    string file_name;
+    cout << endl << "please enter the file name..." << endl;
+    cin >> file_name;
+    ifstream user_file(file_name);
+
+    if (user_file){
+        cout << "This file is already exist" << endl;
+        ofstream output_file;
+        string add_text;
+        cout << "What do you want to write to this file? " << endl;
+        cin.ignore();
+        getline(cin,add_text);
+
+        output_file.open(file_name, ios :: app);
+
+        output_file <<" "<<add_text;
+        cout << "done" << endl;
+
+        output_file.close();
+    }
+
+    else{
+        cout << "This file is not exist, and I will create it for you" << endl;
+        ofstream out_file;
+        out_file.open(file_name, ios :: app);
+        string add_text;
+        cout << "What do you want to write to this file? " << endl;
+        getline(cin,add_text);
+
+        out_file << add_text;
+
+        cout << endl;
+
+        out_file.close();
+    }
+    return 0;
+}
+
+int delete_the_content(){
+    string file_name;
+    cout << endl << "please enter the file name..." << endl;
+    cin >> file_name;
+    ifstream file(file_name);
+    ofstream output_file;
+
+    if (file.is_open()){
+        output_file.open(file_name);
+
+        output_file << "";
+
+        cout << "done" << endl;
+
+        output_file.close();
+    }
+    else{
+        cout << "Enable to open this file" << endl;
+        return 0;
+    }
+
+    return 0;
+}
+
+int encrypt_content(){
+    string file_name;
+    cout << endl << "please enter the file name..." << endl;
+    cin >> file_name;
+    ifstream in_file(file_name);
+    ofstream output_file;
+    string myword;
+    string words;
+
+
+    while (getline(in_file,myword)){
+        for (int i = 0; i < myword.length(); i++){
+            words += myword[i];
+        }
+    }
+    cout << words;
+
+    output_file.open(file_name);
+
+    while (output_file.is_open()){
+        for (int i = 0; i < words.length(); i++){
+            int c = words[i];
+            c = c + 1;
+            words[i] = char(c);
+            output_file << words[i];
+        }
+        output_file.close();
+    }
+
+
+    return 0;
+}
+
+int decrypt_content(){
+    string file_name;
+    cout << endl << "please enter the file name..." << endl;
+    cin >> file_name;
+    ifstream in_file(file_name);
+    ofstream output_file;
+    string myword;
+    string words;
+
+
+    while (getline(in_file,myword)){
+        for (int i = 0; i < myword.length(); i++){
+            words += myword[i];
+        }
+    }
+    cout << words;
+
+    output_file.open(file_name);
+
+    while (output_file.is_open()){
+        for (int i = 0; i < myword.length(); i++){
+            int c = words[i];
+            c = c - 1;
+            words[i] = char (c);
+            output_file << words[i];
+        }
+        output_file.close();
+    }
+
+    return 0;
+}
+
+
 void mainTextEditor(){
     bool validInput = false ;
 
@@ -309,16 +459,22 @@ void mainTextEditor(){
                 "\nPress 3 to count lines"
                 "\nPress 4 to count characters"
                 "\nPress 5 to find word"
-                "\nPress 6 to count your reapeted word "
+                "\nPress 6 to count your repeated word "
                 "\nPress 7 to convert into upper case"
                 "\nPress 8 to convert into lower case "
+                "\nPress 9 to turn file content to 1st caps "
+                "\nPress 10 to add new text to the end of a file "
+                "\nPress 11 to display the content of a file "
+                "\nPress 12 to empty a file "
+                "\nPress 13 to encrypt a file content "
+                "\nPress 14 to decrypt a file content "
                 "\nPress 0 to Exit"
                 "\n-----------------------------------\n";
 
 
         cin >> filterChoice;
 
-        if (filterChoice >= 0 && filterChoice <= 10 ) {
+        if (filterChoice >= 0 && filterChoice <= 14 ) {
 
             switch (filterChoice) {
                 case 0 :
@@ -361,10 +517,35 @@ void mainTextEditor(){
                     validInput = true;
                     break;
 
+                case 10 :
+                    read_from_file() ;
+                    validInput = true;
+                    break;
+
+                case 11 :
+                    write_to_file() ;
+                    validInput = true;
+                    break;
+
+                case 12 :
+                    delete_the_content() ;
+                    validInput = true;
+                    break;
+
+                case 13 :
+                    encrypt_content() ;
+                    validInput = true;
+                    break;
+
+                case 14 :
+                    decrypt_content() ;
+                    validInput = true;
+                    break;
+
+
             }
         }
     }while (! validInput);
-
 
 
 }
