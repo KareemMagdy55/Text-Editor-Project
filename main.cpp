@@ -32,6 +32,8 @@ void first_char_capital();
 
 void exxit();
 
+
+
 int main() {
 
     mergeFiles();
@@ -39,8 +41,9 @@ int main() {
     into_upper();
     into_lower();
     first_char_capital();
-    void exxit();
+    void exit();
 }
+
 
 void mergeFiles(){
 
@@ -76,7 +79,21 @@ void mergeFiles(){
 
 
 }
+void countWords(){
 
+    string word  ;
+    int counter = 0;
+
+    while(file.peek() != EOF) { // Iterate till it is the end of file is reached and avoid EOF char
+        file >> word;
+
+        if (regex_search(word, regex("[a-zA-Z]+"))){ // find every sequence of alphas.
+            counter ++ ;
+        }
+    }
+    cout << counter << endl ;
+
+}
 void reapeted_word(){
     fstream datafile;
     char name[80];
@@ -201,8 +218,7 @@ void first_char_capital(){
 
 }
 
-void exxit(){
+void exit(){
 
     exit(1);
 }
-
