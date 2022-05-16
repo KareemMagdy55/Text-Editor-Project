@@ -29,7 +29,7 @@ void countLines();
 
 void countChars();
 
-void findWord()
+void findWord();
 
 void reapeted_word();
 
@@ -174,23 +174,24 @@ void findWord(){
 
 
 void reapeted_word(){
-    fstream datafile;
+     file;
     char name[80];
     string word, token;
     int count = 0;
     do{
         cout << "pls enter your file name : ";
         cin >> name;
-        datafile.open(name);
+        file.open(name);
 
     }
-    while(!datafile);
+    while(!file);
 
     cout << "enter your word : " << "\n ";
     cin >> word;
-    transform(word.begin(),word.end(),word.begin(),::tolower); // transform all letters of your word you search for into lower case
-    while (datafile>> token ) {
-        transform(token.begin(),token.end(),token.begin(),::tolower);  // transform every word you read from your file int lower case to check if it is equal to your word or not
+
+    transform(word.begin(),word.end(),word.begin(),::tolower);  // transform all letters of your word you search for into lower case
+    while (file>> token ) {
+        transform(token.begin(),token.end(),token.begin(),::tolower);   // transform every word you read from your file int lower case to check if it is equal to your word or not
         if (word == token){
             count++;
 
@@ -198,11 +199,11 @@ void reapeted_word(){
         }
     }
     cout << word << " repeated " << count << " time/s ";
-    datafile.close();
+    file.close();
 
 }
 void into_upper(){
-    ifstream datafile ;
+    file ;
     ofstream target_file;
     char name [80],token[101];
     char c;
@@ -210,24 +211,24 @@ void into_upper(){
         cout <<"pls enter your file name : ";
         cin >> name;
 
-        datafile.open(name);
+        file.open(name);
 
         target_file.open("file_in_capital.txt");
 
     }
-    while(!datafile);
+    while(!file);
 
-    while (datafile.peek()!=EOF){  // loop till the end of your file
-        c = datafile . get() ;  //get every char in your read file
+    while (file.peek()!=EOF){  // loop till the end of your file
+        c = file . get() ;  //get every char in your read file
         target_file.put(toupper(c)) ;  // convert every read char into upper case
     }
-    datafile.close();
+    file.close();
     target_file.close();
 }
 
 void into_lower (){
 
-    ifstream datafile ;
+    file ;
     ofstream into_lower;
     char name [80] , c ;
 
@@ -237,63 +238,63 @@ void into_lower (){
         cout <<"pls enter your file name : ";
         cin >> name;
 
-        datafile.open(name);
+        file.open(name);
 
         into_lower.open("into_lower.txt");
     }
-    while(!datafile);
-    while (datafile.peek()!=EOF){
-        c = datafile . get();
+    while(!file);
+    while (file.peek()!=EOF){
+        c = file . get();
         into_lower.put(tolower(c)) ;
     }
-    datafile.close();
+    file.close();
     into_lower.close();
 
 
 }
 
 void first_char_capital(){
-    fstream File;
+    file;
     char name[80] ;
     char token[250] ;
     string data ;
     do{
         cout << "pls enter your file name : ";
         cin >> name;
-        File.open(name);
+        file.open(name);
 
-    } while (File.fail());
+    } while (file.fail());
 
-    File.getline(token,250,EOF);
+    file.getline(token,250,EOF);
     data+=token ;
-    File.close() ;
-    File.open(name,ios::out);
+    file.close() ;
+    file.open(name,ios::out);
     data[0]=toupper(data[0]);
-    File.put(data[0]);
+    file.put(data[0]);
 
     for (int i=1 ; i<data.length()-1 ;i++){
         if (data[i] == ' ' || data[i]=='\n' ){
-            File.put(data[i]);
+            file.put(data[i]);
 
             if (isalpha(data[i+1])){
 
                 data[i+1]= toupper(data[i+1]);
-                File.put(data[i+1]);
+                file.put(data[i+1]);
                 i++;
             }
 
             else {
-                File.put(data[i+1]);
+                file.put(data[i+1]);
             }
         }
 
         else {
             data [i]=tolower(data[i]);
-            File.put(data[i]);
+            file.put(data[i]);
 
         }
     }
-    File.close();
+    file.close();
 
 }
 void mainTextEditor(){
@@ -308,13 +309,16 @@ void mainTextEditor(){
                 "\nPress 3 to count lines"
                 "\nPress 4 to count characters"
                 "\nPress 5 to find word"
+                "\nPress 6 to count your reapeted word "
+                "\nPress 7 to convert into upper case"
+                "\nPress 8 to convert into lower case "
                 "\nPress 0 to Exit"
                 "\n-----------------------------------\n";
 
 
         cin >> filterChoice;
 
-        if (filterChoice >= 0 && filterChoice <= 3) {
+        if (filterChoice >= 0 && filterChoice <= 10 ) {
 
             switch (filterChoice) {
                 case 0 :
@@ -337,6 +341,23 @@ void mainTextEditor(){
                     break;
                 case 5 :
                     findWord() ;
+                    validInput = true;
+                    break;
+
+                case 6 :
+                    reapeted_word() ;
+                    validInput = true;
+                    break;
+                case 7 :
+                    into_upper() ;
+                    validInput = true;
+                    break;
+                case 8 :
+                    into_lower() ;
+                    validInput = true;
+                    break;
+                case 9 :
+                    first_char_capital() ;
                     validInput = true;
                     break;
 
